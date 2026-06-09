@@ -1,12 +1,3 @@
-```markdown
-<!--
-  evil-ERB - Educational Malware Research Blueprint
-  Version: 1.0.0
-  Last Updated: 2026-06-09
--->
-
-<div align="center">
-
 # 🛡️ evil-ERB
 
 ### *Educational Ransomware Blueprint – Learn Offensive Security the Right Way*
