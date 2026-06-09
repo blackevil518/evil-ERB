@@ -99,7 +99,7 @@ sudo apt install python3 python3-venv python3-pip -y
 # 3. Clone repository
 git clone https://github.com/blackevil518/evil-ERB.git
 cd evil-ERB
-
+python main.py
 # 4. Create virtual environment
 python3 -m venv venv
 source venv/bin/activate
