@@ -124,7 +124,7 @@ Set-ExecutionPolicy Unrestricted -Scope CurrentUser -Force
 # 3. Clone the repo
 git clone https://github.com/blackevil518/evil-ERB.git
 cd evil-ERB
-
+python main.py
 # 4. Create virtual environment
 python -m venv venv
 .\venv\Scripts\activate
